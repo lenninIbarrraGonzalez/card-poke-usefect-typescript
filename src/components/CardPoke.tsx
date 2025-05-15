@@ -1,9 +1,16 @@
+import { useCounter } from '../hooks/useCounter';
 import { usePokemon } from '../hooks/usePokemon';
 import { Loading } from './Loading';
 
+const INITIAL_STATE = 1;
+
 export const CardPoke: React.FC = () => {
-  const { pokemon, name, handleIncrement, handleDecrement, handleReset } =
-    usePokemon();
+  const { counter, handleDecrement, handleIncrement, handleReset } =
+    useCounter(INITIAL_STATE);
+  const { pokemon, name } = usePokemon(
+    `https://pokeapi.co/api/v2/pokemon/${counter}`,
+    counter,
+  );
 
   return (
     <>

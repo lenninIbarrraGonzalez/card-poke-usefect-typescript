@@ -9,7 +9,7 @@ export const useCounter = (INITIAL_STATE: number): CounterHook => {
   };
 
   const handleDecrement = (value: number): void => {
-    setCounter((c) => c - value);
+    setCounter((c) => Math.max(1, c - value));
   };
 
   const handleReset = (): void => {
